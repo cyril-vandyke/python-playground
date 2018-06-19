@@ -12,7 +12,6 @@ class PlayerSelection(QDialog):
 
         layout = QGridLayout()
 
-        self.label = QLabel("Player/Port Selection")
         self.playerList = ["Andrew","Cyril","Flank","Grant","Shane","Weston"]        
         self.p1_group = QButtonGroup(self)
         self.p2_group = QButtonGroup(self)
@@ -29,13 +28,12 @@ class PlayerSelection(QDialog):
             for j in range(len(self.playerList)):
                 var = QRadioButton(self.playerList[j])
                 self.groupList[i].addButton(var)
-                layout.addWidget(var, 2+j, i)
+                layout.addWidget(var, 1+j, i)
                 
-        layout.addWidget(self.label, 0,0)
-        layout.addWidget(p1label, 1,0)
-        layout.addWidget(p2label, 1,1)
-        layout.addWidget(p3label, 1,2)
-        layout.addWidget(p4label, 1,3)
+        layout.addWidget(p1label, 0,0)
+        layout.addWidget(p2label, 0,1)
+        layout.addWidget(p3label, 0,2)
+        layout.addWidget(p4label, 0,3)
 
         self.p1_group.buttonClicked['QAbstractButton *'].connect(self.button_clicked1)
         self.p2_group.buttonClicked['QAbstractButton *'].connect(self.button_clicked2)
@@ -44,7 +42,6 @@ class PlayerSelection(QDialog):
         self.setLayout(layout)
 
     def button_clicked(self, button, fileName):
-        print(button.text())
         f = open(fileName,'w')
         f.write(button.text())
         f.close()
@@ -63,5 +60,7 @@ class PlayerSelection(QDialog):
 
 app = QApplication(sys.argv)
 dialog = PlayerSelection()
+dialog.setWindowTitle("Player Selector")
+dialog.setWindowIcon(QIcon('icon.png'))
 dialog.show()
 app.exec_()
