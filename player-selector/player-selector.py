@@ -12,7 +12,7 @@ class PlayerSelection(QDialog):
 
         layout = QGridLayout()
 
-        self.playerList = ["Andrew","Cyril","Flank","Grant","Shane","Weston"]        
+        self.playerList = ["Andrew","Cyril","Flank","Grant","Shane","Weston", ""]        
         self.p1_group = QButtonGroup(self)
         self.p2_group = QButtonGroup(self)
         self.p3_group = QButtonGroup(self)
